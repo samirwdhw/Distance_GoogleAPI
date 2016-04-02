@@ -40,6 +40,7 @@ for row in parsed_json['rows'][0]['elements']:
 		locationDistances.append(
 									{
 										'location': content[i], 
+										'value': row['distance']['value'],
 										'distance': row['distance']['text']
 									}
 								)
@@ -53,9 +54,10 @@ for row in parsed_json['rows'][0]['elements']:
 
 #To sort the list
 locationDistances.sort()
+sortedList = sorted(locationDistances, key= lambda locationDistances: locationDistances['value'])
 
-for i in locationDistances:
-	print i['location']
+for i in sortedList:
+	print i['location'] + ": " + i['distance']
 
 for notFound in locationNotFound:
-	print notFound
+	print notFound + ": No path found" 
