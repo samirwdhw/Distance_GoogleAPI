@@ -40,7 +40,7 @@ def getBirdDist(lat_long):
 	return (geopy.distance.vincenty(IITB_latLong, lat_long).meters)/1000
 
 
-
+print "Sorted using distance by road: "
 #Array of lists to store locations with their distances
 locationDistances = []
 
@@ -93,8 +93,7 @@ for notFound in locationNotFound:
 #To calculate the bird's line distance
 
 print " "
-print " "
-print " "
+print "Sorted using bird's line distance: "
 
 #To empty the lists 
 del locationDistances[:]
@@ -126,6 +125,6 @@ locationDistances.sort()
 sortedList = sorted(locationDistances, key= lambda locationDistances: locationDistances['value'])
 
 for i in sortedList:
-	print i['location'] + ": " + str(i['value'])
+	print i['location'] + ": " + str(i['value']) + " km"
 for notFound in locationNotFound:
 	print notFound + ": No path found" 
